@@ -72,7 +72,7 @@ def init(path, apps_path=None, no_procfile=False, no_backups=False,
 		if not frappe_path:
 			frappe_path = 'https://github.com/frappe/frappe.git'
 
-		get_app(frappe_path, branch=frappe_branch, bench_path=path, build_asset_files=False, verbose=verbose)
+		get_app(frappe_path, branch=frappe_branch, bench_path=path, skip_assets=True, verbose=verbose)
 
 		if apps_path:
 			install_apps_from_path(apps_path, bench_path=path)
@@ -732,12 +732,6 @@ def update_translations(app, lang):
 
 	print('downloaded for', app, lang)
 
-def download_chart_of_accounts():
-	charts_dir = os.path.join('apps', "erpnext", "erpnext", 'accounts', 'chart_of_accounts', "submitted")
-	csv_file = os.path.join(translations_dir, lang + '.csv')
-	url = "https://translate.erpnext.com/files/{}-{}.csv".format(app, lang)
-	r = requests.get(url, stream=True)
-	r.raise_for_status()
 
 def print_output(p):
 	while p.poll() is None:
