@@ -238,8 +238,19 @@ def build_assets(bench_path='.', app=None):
 
 def get_sites(bench_path='.'):
 	sites_path = os.path.join(bench_path, 'sites')
+<<<<<<< HEAD
+	sites = []
+	for site in os.listdir(sites_path):
+		path = os.path.join(sites_path, site)
+		if (os.path.isdir(path)
+			and not os.path.islink(path)
+			and os.path.exists(os.path.join(path, 'site_config.json'))):
+			sites.append(site)
+	return sorted(sites)
+=======
 	sites = (site for site in os.listdir(sites_path) if os.path.exists(os.path.join(sites_path, site, 'site_config.json')))
 	return sites
+>>>>>>> upstream/master
 
 def get_bench_dir(bench_path='.'):
 	return os.path.abspath(bench_path)

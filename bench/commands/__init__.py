@@ -31,11 +31,12 @@ def bench_command(bench_path='.'):
 	setup_logging(bench_path=bench_path)
 
 
-from bench.commands.make import init, get_app, new_app, remove_app
+from bench.commands.make import init, get_app, new_app, remove_app, pip
 bench_command.add_command(init)
 bench_command.add_command(get_app)
 bench_command.add_command(new_app)
 bench_command.add_command(remove_app)
+bench_command.add_command(pip)
 
 
 from bench.commands.update import update, retry_upgrade, switch_to_branch, switch_to_master, switch_to_develop
@@ -47,7 +48,7 @@ bench_command.add_command(switch_to_develop)
 
 from bench.commands.utils import (start, restart, set_nginx_port, set_ssl_certificate, set_ssl_certificate_key, set_url_root,
 	set_mariadb_host, set_default_site, download_translations, shell, backup_site, backup_all_sites, release, renew_lets_encrypt,
-	disable_production, bench_src, prepare_beta_release, set_redis_cache_host, set_redis_queue_host, set_redis_socketio_host)
+	disable_production, bench_src, prepare_beta_release, set_redis_cache_host, set_redis_queue_host, set_redis_socketio_host, find_benches)
 bench_command.add_command(start)
 bench_command.add_command(restart)
 bench_command.add_command(set_nginx_port)
@@ -68,6 +69,7 @@ bench_command.add_command(renew_lets_encrypt)
 bench_command.add_command(disable_production)
 bench_command.add_command(bench_src)
 bench_command.add_command(prepare_beta_release)
+bench_command.add_command(find_benches)
 
 from bench.commands.setup import setup
 bench_command.add_command(setup)
